@@ -1,0 +1,30 @@
+name: Anforderung
+description: Vorlage für eine neue Anforderung (Feature oder Bugfix)
+title: "[ANF] <Kurzer Titel>"
+labels: []
+body:
+  - type: textarea
+    id: anforderung
+    attributes:
+      label: Anforderung (Schema)
+      description: >
+        Beschreibe die Anforderung im folgenden Schema:
+        Zielsystem + Priorität + Systemaktivität + Ergänzungen + Funktionalität + Bedingungen
+      placeholder: >
+        Beispiel:
+        Reflect Media Player muss dem Benutzer die Möglichkeit bieten,
+        J3D Szenengraphen aus einer wrml-Datei über das Netzwerk zu laden,
+        falls der Benutzer eingeschrieben ist.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: typ
+    attributes:
+      label: Typ der Anforderung
+      options:
+        - Funktionale Anforderung
+        - Qualitätsanforderung
+        - Randanforderung
+    validations:
+      required: true
