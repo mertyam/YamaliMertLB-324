@@ -3,20 +3,61 @@ description: Vorlage für eine neue Anforderung (Feature oder Bugfix)
 title: "[ANF] <Kurzer Titel>"
 labels: []
 body:
-  - type: textarea
-    id: anforderung
+  - type: input
+    id: zielsystem
     attributes:
-      label: Anforderung (Schema)
-      description: >
-        Beschreibe die Anforderung im folgenden Schema:
-        Zielsystem + Priorität + Systemaktivität + Ergänzungen + Funktionalität + Bedingungen
-      placeholder: >
-        Beispiel:
-        Reflect Media Player muss dem Benutzer die Möglichkeit bieten,
-        J3D Szenengraphen aus einer wrml-Datei über das Netzwerk zu laden,
-        falls der Benutzer eingeschrieben ist.
+      label: Zielsystem
+      description: Welches (Teil-)System ist betroffen?
+      placeholder: z. B. Tagebuch-System
     validations:
       required: true
+
+  - type: dropdown
+    id: prioritaet
+    attributes:
+      label: Priorität
+      description: Wähle die Wichtigkeit
+      options:
+        - muss (hoch)
+        - soll (mittel)
+        - wird (niedrig)
+    validations:
+      required: true
+
+  - type: textarea
+    id: systemaktivitaet
+    attributes:
+      label: Systemaktivität
+      description: Beschreibe die Art der Aktivität (z. B. „dem Benutzer die Möglichkeit bieten“ oder „fähig sein“)
+      placeholder: dem Benutzer die Möglichkeit bieten, ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: ergaenzungen
+    attributes:
+      label: Ergänzungen
+      description: Zusätzliche Details, z. B. „über das Netzwerk“ oder „mit Passwort“
+    validations:
+      required: false
+
+  - type: textarea
+    id: funktionalitaet
+    attributes:
+      label: Funktionalität
+      description: Was soll genau passieren?
+      placeholder: Einloggen, Szenengraph laden, ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: bedingungen
+    attributes:
+      label: Bedingungen
+      description: Zeitliche Bedingungen mit „wenn“, logische Bedingungen mit „falls“
+      placeholder: falls der Benutzer registriert ist
+    validations:
+      required: false
 
   - type: dropdown
     id: typ
