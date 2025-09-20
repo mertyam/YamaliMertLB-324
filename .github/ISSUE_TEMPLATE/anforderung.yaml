@@ -3,7 +3,7 @@ description: Vorlage für eine neue Anforderung (Feature oder Bugfix)
 title: "[ANF] <Kurzer Titel>"
 labels:
   - Funktionale Anforderung
-  - Qualitätsanforderung
+  - Qualitaetsanforderung
   - Randanforderung
 body:
   - type: input
