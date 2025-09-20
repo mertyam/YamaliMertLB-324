@@ -26,3 +26,6 @@ def test_add_entry(client):
     entry = entries[0]
     assert entry is not None
     assert entry.content == 'Test Entry Content'
+
+def test_fail():
+    assert 1 == 2
