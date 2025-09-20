@@ -24,7 +24,7 @@ def index():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def login( ):
     if request.method == 'POST':
         user_password = request.form.get('password')
         if user_password == PASSWORD:
