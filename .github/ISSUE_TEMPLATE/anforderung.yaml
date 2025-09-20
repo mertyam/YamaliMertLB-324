@@ -1,7 +1,10 @@
 name: Anforderung
 description: Vorlage für eine neue Anforderung (Feature oder Bugfix)
 title: "[ANF] <Kurzer Titel>"
-labels: []
+labels:
+  - Funktionale Anforderung
+  - Qualitätsanforderung
+  - Randanforderung
 body:
   - type: input
     id: zielsystem
