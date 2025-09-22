@@ -10,6 +10,7 @@ pre-commit run --all-files
 Eine Konfigurationsdatei .pre-commit-config.yaml im Repo anlegen.
 -  Bei jedem Commit wird der Code automatisch formatiert.
 -  Bei jedem Push laufen die Tests mit pytest. Schlägt ein Test fehl, wird der Push blockiert.
+
 ## Aufgabe 4
 Passwort aus .env auf Azure übertragen
 Im Azure Portal unter Einstellungen → Umgebungsvariabeln eine neue Variable erstellt:
