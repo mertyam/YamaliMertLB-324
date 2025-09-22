@@ -1,6 +1,6 @@
 import os
-from dataclasses import dataclass, field  # <- field ergänzen
-from datetime import datetime
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
 
 from dotenv import load_dotenv
 from flask import Flask, flash, redirect, render_template, request, session, url_for
@@ -15,8 +15,8 @@ entries = []
 @dataclass
 class Entry:
     content: str
-    happiness: str = ""  # <- neu
-    timestamp: datetime = field(default_factory=datetime.utcnow)  # robuster Default
+    happiness: str = ""
+    timestamp: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 @app.route("/")
@@ -47,9 +47,9 @@ def logout():
 @app.route("/add_entry", methods=["POST"])
 def add_entry():
     content = request.form.get("content", "").strip()
-    happiness = request.form.get("happiness", "").strip()  # <- neu
+    happiness = request.form.get("happiness", "").strip()
     if content:
-        # vorne einfügen, damit tests mit entries[0] sicher sind
+        # Neueste zuerst, damit tests mit entries[0] passen
         entries.insert(0, Entry(content=content, happiness=happiness))
     return redirect(url_for("index"))
 
