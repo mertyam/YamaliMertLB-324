@@ -1,32 +1,26 @@
-name: Run Tests on Pull Request
+name: main
 
 on:
   pull_request:
-    branches:
-      - dev-Ast
+    branches: ["dev"]
 
 jobs:
-  run-tests:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    # Check out the code
-    - name: Check out code
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    # Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    # Install dependencies
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
 
-    # Run tests
-    - name: Run Tests
-      run: |
-        python -m pytest
+      - name: Run tests
+        run: pytest -q
