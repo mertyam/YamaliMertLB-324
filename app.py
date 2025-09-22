@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field  # <- field ergänzen
 from datetime import datetime
 
 from dotenv import load_dotenv
@@ -15,7 +15,8 @@ entries = []
 @dataclass
 class Entry:
     content: str
-    timestamp: datetime = datetime.now()
+    happiness: str = ""  # <- neu
+    timestamp: datetime = field(default_factory=datetime.utcnow)  # robuster Default
 
 
 @app.route("/")
@@ -45,10 +46,11 @@ def logout():
 
 @app.route("/add_entry", methods=["POST"])
 def add_entry():
-    content = request.form.get("content")
+    content = request.form.get("content", "").strip()
+    happiness = request.form.get("happiness", "").strip()  # <- neu
     if content:
-        entry = Entry(content=content)
-        entries.append(entry)
+        # vorne einfügen, damit tests mit entries[0] sicher sind
+        entries.insert(0, Entry(content=content, happiness=happiness))
     return redirect(url_for("index"))
 
 
